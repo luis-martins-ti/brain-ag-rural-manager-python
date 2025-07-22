@@ -371,7 +371,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/producers/",
+							"raw": "http://127.0.0.1:8000/producers/?page=1&limit=5",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -383,6 +383,16 @@
 							"path": [
 								"producers",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -579,7 +589,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Produtor Atualizado\",\r\n    \"cpf_cnpj\": \"922.858.580-35\"\r\n}",
+							"raw": "{\r\n    \"name\": \"João da Silva Atualizado\",\r\n    \"cpf_cnpj\": \"58846628071\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

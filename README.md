@@ -81,6 +81,14 @@ Logs e observações via terminal:
 docker-compose logs -f web
 ```
 
+### 🛠️ TROBLESHOOTING:
+| Erro                                         | Causa provável                   | Solução                                                        |
+|----------------------------------------------|----------------------------------|----------------------------------------------------------------|
+| Container rural_api encerra sozinho          | Erro de construção do app        | Rode `docker compose down -v --remove-orphans` e depois build  |
+
+
+
+
 ### 📘 Tecnologias Utilizadas
 - Python 3.10+
 - FastAPI

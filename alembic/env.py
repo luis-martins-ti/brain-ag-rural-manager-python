@@ -4,7 +4,10 @@ from alembic import context
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# Adiciona raiz do projeto ao sys.path para permitir importações de app.*
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if root_path not in sys.path:
+    sys.path.insert(0, root_path)
 
 from app.db.database import Base
 from app.core.config import settings

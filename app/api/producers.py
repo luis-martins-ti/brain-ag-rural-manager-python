@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, Query, Request
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from app.auth.deps import get_db, get_current_user
 from app.schemas.producer import ProducerCreate, ProducerOut
@@ -21,9 +22,16 @@ def add_producer(
     return create_producer(db, producer_in)
 
 
-@router.get("/", response_model=list[ProducerOut])
-def get_producers(db: Session = Depends(get_db), user=Depends(get_current_user)):
-    return list_producers(db)
+@router.get("/")
+def get_producers(
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user),
+    request: Request = None,
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100),
+):
+    skip = (page - 1) * limit
+    return list_producers(db=db, skip=skip, limit=limit, page=page, request=request)
 
 
 @router.put("/{producer_id}", response_model=ProducerOut)

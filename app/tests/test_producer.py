@@ -11,7 +11,9 @@ def test_create_producer(client, auth_headers):
 def test_get_all_producers(client, auth_headers):
     response = client.get("/producers/", headers=auth_headers)
     assert response.status_code == 200
-    assert isinstance(response.json(), list)
+    data = response.json()
+    assert "data" in data
+    assert isinstance(data["data"], list)
 
 
 def test_update_producer(client, auth_headers):
@@ -53,4 +55,5 @@ def test_delete_producer(client, auth_headers):
 
     # Verifica remoção
     response = client.get("/producers/", headers=auth_headers)
-    assert all(p["id"] != producer_id for p in response.json())
+    data = response.json()
+    assert all(p["id"] != producer_id for p in data["data"])

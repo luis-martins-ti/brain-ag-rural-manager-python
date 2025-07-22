@@ -69,6 +69,26 @@ def seed_data():
                     )
                     db.add(cultura)
 
+        # PRODUTOR 3
+        maria = Producer(name="Maria Silva", cpf_cnpj="958.086.910-36")
+        db.add(maria)
+        db.flush()
+
+        # PRODUTOR 4
+        maria = Producer(name="João Oliveira", cpf_cnpj="468.211.760-27")
+        db.add(maria)
+        db.flush()
+
+        # PRODUTOR 5
+        maria = Producer(name="Mario Pereira", cpf_cnpj="711.867.820-13")
+        db.add(maria)
+        db.flush()
+
+        # PRODUTOR 6
+        maria = Producer(name="Joana Silva", cpf_cnpj="799.186.540-15")
+        db.add(maria)
+        db.flush()
+
         db.commit()
         print("✅ Seed de dados executado com sucesso!")
     except Exception as e:
